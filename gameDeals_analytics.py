@@ -8,7 +8,7 @@ import datetime
 url = "https://www.cheapshark.com/api/1.0/deals"
 deals = requests.get(url).json()
 
-con = sqlite3.connect("tutorial.db")
+con = sqlite3.connect("cheapshark.db")
 
 cur = con.cursor()
 
@@ -51,12 +51,9 @@ for d in deals:
 con.commit()
 
 
-
-# for row in cur.execute("SELECT  storeID, name, salePrice, normalPrice, metacriticScore FROM deals ORDER BY normalPrice"):
-#     print(row)
-# print()
-print("Data Analytics: ")
-print("----------------------------------")
+print()
+print("Game Deals Analytics from CheapShark API:")
+print("------------------------------------------")
 
 cur.execute("""
 SELECT distinct name, normalPrice 
